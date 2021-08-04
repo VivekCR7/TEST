@@ -28,4 +28,3 @@ s1 = input()
 s2 = input()
 print('The Longest common subsequence between two string is: ',LCS(s1,s2))
 
-
