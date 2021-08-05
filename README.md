@@ -61,7 +61,7 @@ ___
 
 <!-- Images -->
 
-![github logo] (download.png)
+![Github](download.png)
 
 
 <!-- github markdown -->
@@ -72,16 +72,15 @@ ___
     def add(a,b):
         return a+b
 ```
+
 <!-- tables -->
 
-| Name | Email |
-|------|-------|
+| Name  | Email         |
+| ----- | ------------- |
 | Vivek | xyz@gmail.com |
 
  <!--Task lists  -->
  * [x] Task 1
  * [ ] Task 2
  * [ ] Task 3
-
-
 
