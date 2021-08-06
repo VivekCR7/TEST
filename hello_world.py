@@ -1,7 +1,9 @@
-# print("Hello World!!")
+"""
+this is for testing
+"""
 
-names = ['Vivek','Ronaldo']
-for i in names:
+n = ['Vivek', 'Ronaldo']
+for i in n:
     print("Hi " + i + '!!')
 
 print("Testing the merge conflict")
@@ -9,4 +11,6 @@ print("Bug here")
 
 print("undo this")
 
-print("This line is under conflict branch")
+arr = [[1, 2,  3],
+       [2, 3, 4]
+       ]
