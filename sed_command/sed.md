@@ -9,7 +9,7 @@
    1. <span style="color:lightblue">Replacing or Substituting</span>
    2. <span style="color:lightblue">Deleting</span>
    3. <span style="color:lightblue">File Spacing</span>
-   4. <span style="color:lightblue">Numbering Lines</span>
+   4. <span style="color:lightblue">View or Print Lines</span>
 
 <br />
 
