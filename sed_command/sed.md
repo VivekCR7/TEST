@@ -101,20 +101,6 @@ linux is easy to learn.linux is a multiuser os.Learn linux .linux is a powerful.
     ```
 <br> <br>
 
-### **Example 5 : Duplicating the lines with /p flag**
-
-```
-$ sed '/unix/p' test.txt
-unix is great os. unix is opensource. unix is free os.
-unix is great os. unix is opensource. unix is free os.
-learn operating system.
-unix linux which one you choose.
-unix linux which one you choose.
-unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
-unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
-```
-    
-<br> <br>
 
 ### **Example 5 : Replacing strings on a range of a lines**
 
@@ -348,6 +334,32 @@ nine
 ten
 ```
 
+<br> <br>
+   
+### **Example 4 : print the line which matches pattern.**
+
+```
+$ sed -n '/is/p' test.txt
+unix is great os. unix is opensource. unix is free os.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+```
+
+<br> <br>
+   
+### **Example 5 : Duplicating the lines with /p flag**
+
+```
+$ sed '/.*/p' test.txt
+unix is great os. unix is opensource. unix is free os.
+unix is great os. unix is opensource. unix is free os.
+learn operating system.
+learn operating system.
+unix linux which one you choose.
+unix linux which one you choose.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+```
+    
 <br> <br>
 
 
