@@ -10,6 +10,7 @@
    2. <span style="color:lightblue">Deleting</span>
    3. <span style="color:lightblue">File Spacing</span>
    4. <span style="color:lightblue">View or Print Lines</span>
+3. <span style="color:lightblue">References</span>
 
 <br />
 
@@ -22,6 +23,8 @@
 * Sed command is Short for stream editor that allows searching, find and replace, insertion or deletion.
 * Most commonly sed command is used for substitution or for finding replace.
 * It allows you to edit a file without opening it which is much quicker way to find and replace something in file, than opening a editior and then changing it.
+
+<br><br>
 
 ## How SED command is Invoked?
 
@@ -92,13 +95,13 @@ linux is easy to learn.linux is a multiuser os.Learn linux .linux is a powerful.
 
 ### **Example 4 : Replacing string on a specific line number**
 
-    ```
-    $ sed '1 s/unix/linux/' test.txt
-    linux is great os. unix is opensource. unix is free os.
-    learn operating system.
-    unix linux which one you choose.
-    unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
-    ```
+   ```
+   $ sed '1 s/unix/linux/' test.txt
+   linux is great os. unix is opensource. unix is free os.
+   learn operating system.
+   unix linux which one you choose.
+   unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+   ```
 <br> <br>
 
 
@@ -361,6 +364,14 @@ unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
 ```
     
 <br> <br>
+
+
+## **References**
+
+* https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+* https://www.geeksforgeeks.org/sed-command-linux-set-2/
+* https://www.gnu.org/software/sed/manual/sed.html
+* https://www.youtube.com/watch?v=EACe7aiGczw&ab_channel=DistroTube
 
 
 
