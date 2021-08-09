@@ -22,7 +22,7 @@
 
 * Sed command is Short for stream editor that allows searching, find and replace, insertion or deletion.
 * Most commonly sed command is used for substitution or for finding replace.
-* It allows you to edit a file without opening it which is much quicker way to find and replace something in file, than opening a editior and then changing it.
+* It allows you to edit a file without opening it which is much quicker way to find and replace something in file, than opening a editor and then changing it.
 
 <br><br>
 
