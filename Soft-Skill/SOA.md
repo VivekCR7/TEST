@@ -115,7 +115,7 @@
 
 * **High overhead:** A validation of input parameters of services is done whenever services interact this decreases performance as it increases load and response time.
 * **High investment:** A huge initial investment is required for SOA.
-* **Complex service management:** When services interact they exchange messages to tasks. the number of messages may go in millions. It becomes a cumbersome task to handle a large number of messages.
+* **Complex service management:** When services interact they exchange messages to tasks. the number of messages may go in millions. It becomes a lumpsum task to handle a large number of messages.
 
 <br>
 
