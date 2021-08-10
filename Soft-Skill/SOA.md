@@ -4,13 +4,13 @@
 
 # Table of Contents
 
- 1. <h3 style="color:lightblue"> What is service oriented architecture? </h3>
- 2. <h3 style="color:lightblue"> Why there is need of SOA? </h3> 
- 3. <h3 style="color:lightblue"> objectives of SOA? </h3> 
- 4. <h3 style="color:lightblue"> Implementation of SOA? </h3>
- 5. <h3 style="color:lightblue"> Applications of SOA? </h3>
- 6. <h3 style="color:lightblue"> Advantages and Disadvantages of SOA? </h3>
- 7. <h3 style="color:lightblue"> References </h3>
+ 1. What is service oriented architecture? 
+ 2. Why there is need of SOA?  
+ 3. objectives of SOA? 
+ 4. Implementation of SOA? 
+ 5. Applications of SOA? 
+ 6. Advantages and Disadvantages of SOA? 
+ 7. style="color:lightblue"> References 
 
 <br>
 <br>
@@ -46,6 +46,16 @@
 <br>
 
 ## Objectives of SOA ?
+<br>
+
+* The main objective is to structure procedures or software components as services. These services are designed to be loosely coupled to applications, so they are only used when needed.They are also designed to be easily used by software developers, who have to work on applications in a consistent way.
+* The second objective is to provide a mechanism for publishing available services, which includes their functionality and I/O requirements.Services are published in a way that allows developers to easily incorporate them into applications.
+* The last objective but not least of SOA is to control the use of these services to avoid security and governance problems.
+
+<br>
+
+![IMAGE](https://miro.medium.com/max/1400/1*Xot9nbkQAGbGaYwi84Kh-w.png)
+
 <br>
 
 
