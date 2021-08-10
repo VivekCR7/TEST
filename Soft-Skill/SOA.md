@@ -6,7 +6,7 @@
 
  1. What is Service-oriented architecture? 
  2. Why there is a need for SOA?  
- 3. objectives of SOA? 
+ 3. Objectives of SOA? 
  4. Implementation of SOA? 
  5. Applications of SOA? 
  6. Advantages and Disadvantages of SOA? 
@@ -15,7 +15,7 @@
 <br>
 <br>
 
-## what is service-oriented architecture?
+## What is Service-Oriented Architecture?
 
 * Service Oriented Architecture is an architectural approach in which applications make use of services available in the network.
 * It is as well applied in the field of software design where services are provided to the other components, through a communication protocol over a network.
@@ -42,11 +42,11 @@
 <br>
 
 * As the buisnesses grow more complex and the world needs for global systems to meet their goals increased SOA was introduced and was the go-to solution.
-* when the monolith solutions started to hit there limit, to make the system organized with seperate modular pieces and abstract those functionalities and make them accessible at specific well-defined endpoints. that's the reason soa is used.
+* When the monolith solutions started to hit there limit, to make the system organized with seperate modular pieces and abstract those functionalities and make them accessible at specific well-defined endpoints. that's the reason soa is used.
 * Distributed systems, the main reason for SOA adoption, cause it allows the software components reusable via service interfaces. These interfaces utilize common communication standards in such a way that they can be rapidly incorporated into new applications without having to perform deep integration each time.
 * Different owners, this is also main reason for soa adoption as, businesses and software systems grow and more teams take part in software development, SOA presents ideal solutions for such cases.
 * Hetroginity, global and large complex systems tend to lack of harmony different platforms and technologies are used to solve different problems in the system, this introduces many challenges. SOA helps back through smooth integration of different parts into one single systems.
-* with the use of SOA, it's possible to reduce costs while still "maintaining a desired level of output". It allows busisnesses to limit the amount of analysis required when developing custom solutions.
+* With the use of SOA, it's possible to reduce costs while still "maintaining a desired level of output". It allows busisnesses to limit the amount of analysis required when developing custom solutions.
 * The most important is scalability of a buisness to meet the expectations of clients. to do so SOA cuts back on the client-service interaction, which allows for greater scalability.
 * Most important and fast development which is resuability of code, not only does this cut down the pace of the development but there is no reason to reinvent the coding wheel every time. SOA allows for using multiple coding languages because everything runs through a central interface. That makes the development very fast.
 
