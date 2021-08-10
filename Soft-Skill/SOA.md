@@ -26,7 +26,7 @@
     * The service provider is the maintainer of the service and the organization that makes one or more services to use.
     * To advertise services, the provider can publish them in a registery, together with a service contract, that specifies how to use it, the requirements of the services, and the fees charged.
   * **Service Consumer:**
-    * The service consumer can locate the service metadata in the registery and develop the required client components to bind and use the service.
+    * The service consumer can locate the service data in the registery and develop the required client components to bind and use the service.
 
 <br>
 
