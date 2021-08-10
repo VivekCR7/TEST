@@ -30,7 +30,11 @@
 
 <br>
 
-![IMAGE](https://media.geeksforgeeks.org/wp-content/uploads/Screenshot-245.png)
+<!-- ![IMAGE](https://media.geeksforgeeks.org/wp-content/uploads/Screenshot-245.png) -->
+
+<p align = "center">
+    <img src="https://media.geeksforgeeks.org/wp-content/uploads/Screenshot-245.png" width=500 height=200>
+</p>
 
 <br>
 
