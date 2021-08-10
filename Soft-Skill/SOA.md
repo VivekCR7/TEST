@@ -15,7 +15,7 @@
 <br>
 <br>
 
-## 1. what is service oriented architecture?
+## what is service oriented architecture?
 
 * Service Oriented Architecture is an architecutral approach in which applications make use of services available in the network.
 * It is as well applied in the field of software design where services are provided to the other components, through a communication protocol over a network.
