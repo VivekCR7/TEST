@@ -4,8 +4,8 @@
 
 # Table of Contents
 
- 1. What is service oriented architecture? 
- 2. Why there is need of SOA?  
+ 1. What is Service-oriented architecture? 
+ 2. Why there is a need for SOA?  
  3. objectives of SOA? 
  4. Implementation of SOA? 
  5. Applications of SOA? 
@@ -15,9 +15,9 @@
 <br>
 <br>
 
-## what is service oriented architecture?
+## what is service-oriented architecture?
 
-* Service Oriented Architecture is an architecutral approach in which applications make use of services available in the network.
+* Service Oriented Architecture is an architectural approach in which applications make use of services available in the network.
 * It is as well applied in the field of software design where services are provided to the other components, through a communication protocol over a network.
 * SOA allows users to combine a large number of facilities from existing services to form applications.
 * Each service is an SOA embodies the code and data integration required to execute a complete, discrete business function (e.g., checking a customer's credit, calculating the monthly loan).
