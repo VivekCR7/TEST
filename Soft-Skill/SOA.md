@@ -10,7 +10,7 @@
  4. Implementation of SOA? 
  5. Applications of SOA? 
  6. Advantages and Disadvantages of SOA? 
- 7. style="color:lightblue"> References 
+ 7. References 
 
 <br>
 <br>
@@ -54,7 +54,11 @@
 
 <br>
 
-![IMAGE](https://miro.medium.com/max/1400/1*Xot9nbkQAGbGaYwi84Kh-w.png)
+<!-- ![IMAGE](https://miro.medium.com/max/1400/1*Xot9nbkQAGbGaYwi84Kh-w.png) -->
+
+<p align = "center">
+    <img src="https://miro.medium.com/max/1400/1*Xot9nbkQAGbGaYwi84Kh-w.png" width=400 height=350>
+</p>
 
 <br>
 
