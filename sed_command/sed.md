@@ -24,7 +24,7 @@
 * Most commonly sed command is used for substitution or for finding replace.
 * It allows you to edit a file without opening it which is much quicker way to find and replace something in file, than opening a editor and then changing it.
 
-<br><br>
+<br>
 
 ## How SED command is Invoked?
 
@@ -39,8 +39,8 @@ $ man sed
 
 ## 1 . **Replacing or substituting**
    
-   ### **Examples** 
-   **consider below text file as an input.**
+### **Examples** 
+**consider below text file as an input.**
 
 ```
 $ cat > test.txt
@@ -49,7 +49,7 @@ learn operating system.
 unix linux which one you choose.
 unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
 ```
-   <br> <br>
+   <br>
    
 
 ### **Example 1 : suppose you need to replace unix with linux**
@@ -62,15 +62,13 @@ linux linux which one you choose.
 linux is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
 ```
 
-   <br> 
-   <h3> Here the “s” specifies the substitution operation. The “/” are delimiters. The “unix” is the search pattern and the “linux” is the replacement string.
-   
-   By default, the sed command replaces the first occurrence of the pattern in each line and it won’t replace the second, third…occurrence in the line.
-   </h3>
-   
-   <br> <br>
+<br> 
 
-   ### **Example 2 : If you want to replace the nth occurence of a word in a line**
+#### Here the “s” specifies the substitution operation. The “/” are delimiters. The “unix” is the search pattern and the “linux” is the replacement string. By default, the sed command replaces the first occurrence of the pattern in each line and it won’t replace the second, third…occurrence in the line.
+
+<br> 
+
+### **Example 2 : If you want to replace the nth occurence of a word in a line**
 
 ```
 $ sed 's/unix/linux/3' test.txt
@@ -80,9 +78,9 @@ unix linux which one you choose.
 unix is easy to learn.unix is a multiuser os.Learn linux .unix is a powerful.
 ```
    
-   <br> <br>
-   
-   ### **Example 3 : If you want to replace all the occurence of a word in a line**
+<br> 
+
+### **Example 3 : If you want to replace all the occurence of a word in a line**
 
 ```
 $ sed 's/unix/linux/g' test.txt
@@ -91,7 +89,7 @@ learn operating system.
 linux linux which one you choose.
 linux is easy to learn.linux is a multiuser os.Learn linux .linux is a powerful.
 ```
-<br> <br>
+<br> 
 
 ### **Example 4 : Replacing string on a specific line number**
 
@@ -102,7 +100,7 @@ linux is easy to learn.linux is a multiuser os.Learn linux .linux is a powerful.
    unix linux which one you choose.
    unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
    ```
-<br> <br>
+<br>
 
 
 ### **Example 5 : Replacing strings on a range of a lines**
@@ -158,10 +156,10 @@ nine
 ten
 ```
 
-<h3>So in the above example "d" flag is used for deleting, and the number specified here is the nth line in this case 4th line.<h3>
+#### So in the above example "d" flag is used for deleting, and the number specified here is the nth line in this case 4th line.
 
 
-<br><br>
+<br>
 
 ### **Example 2 : To delete lines in range.**
 
@@ -176,7 +174,7 @@ nine
 ten
 ```
 
-<br><br>
+<br>
 
 ### **Example 3 : To delete line containing the word.**
 
@@ -193,7 +191,7 @@ nine
 ten
 ```
 
-<br> <br>
+<br> 
 
 ## 3 . **File Spacing**
 
@@ -225,7 +223,7 @@ ten
 
 ```
 
-<br><br>
+<br>
 
 
 ### **Example 2 : Insert One blank line after each line.**
@@ -263,7 +261,7 @@ ten
 
 
 ```
-<br><br>
+<br>
 
 ### **Example 3 : Delete Blank lines**
 
@@ -281,7 +279,7 @@ nine
 ten
 ```
 
-<br> <br>
+<br>
 
 ### **Example 4 : insert a line for every matching pattern**
 
@@ -300,7 +298,7 @@ nine
 ten
 ```
 
-<br><br>
+<br>
 
 ## 4 . **View/Print lines**
 
@@ -315,7 +313,7 @@ four
 five
 ```
 
-<br><br>
+<br>
 
 ### **Example 2 : print the nth line.**
 
@@ -324,7 +322,7 @@ $ sed -n '4'p numbers.txt
 four
 ```
 
-<br> <br>
+<br>
 
 ### **Example 3 : print from the nth line to end of a file.**
 
@@ -337,7 +335,7 @@ nine
 ten
 ```
 
-<br> <br>
+<br>
    
 ### **Example 4 : print the line which matches pattern.**
 
@@ -347,7 +345,7 @@ unix is great os. unix is opensource. unix is free os.
 unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
 ```
 
-<br> <br>
+<br>
    
 ### **Example 5 : Duplicating the lines with /p flag**
 
@@ -363,7 +361,7 @@ unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
 unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
 ```
     
-<br> <br>
+<br>
 
 
 ## **References**
