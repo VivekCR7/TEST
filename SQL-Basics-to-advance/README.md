@@ -524,7 +524,278 @@ month of september 2012 and sorted by the number of slots.
 
 <br>
 
-## Author
+### GROUP BY / HAVING
+
+It is used with the aggregate functions, it groups rows that have the same values
+into summary rows, like "find the number of customers in each country".
+
+"GROUP BY" clause comes after the "WHERE" clause so to filter the "GROUP BY" data luckily we
+have the "HAVING" clause.
+
+we will see this thing in action.
+
+suppose we need to produce a list of facilities with more than 1000 slots. we can get the results
+with the help of group by and having.
+
+```sql
+> select facid, sum(slots) as "Total Slots"
+    from cd.bookings
+    group by facid
+    having sum(slots) > 1000
+    order by facid;  
+
+
+     facid | Total Slots
+    -------+-------------
+        0 |        1320
+        1 |        1278
+        2 |        1209
+        4 |        1404
+        6 |        1104      
+```
+
+in above example we used aggregate function SUM to get total the slots
+then we group by with "facid" which grouped the results with the distinct facid
+and we used having clause to filter out the entries whose slots is greater than 1000.
+
+
+### Subqueries
+
+Subqueries is like the nested Queries, like we have a query inside a query
+
+the simple example is, suppose if you want to create a new table with your result query we
+can simply do it by using Subqueries.
+
+
+```sql
+>create table subquery as (
+    select distinct facid, name from cd.facilities
+    order by facid
+);
+
+SELECT 9
+```
+
+to check the output write below command
+
+```sql
+> \dt
+
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | subquery | table | your_name
+```
+
+```sql
+> select * from subquery;
+
+ facid |      name
+-------+-----------------
+     0 | Tennis Court 1
+     1 | Tennis Court 2
+     2 | Badminton Court
+     3 | Table Tennis
+     4 | Massage Room 1
+     5 | Massage Room 2
+     6 | Squash Court
+     7 | Snooker Table
+     8 | Pool Table
+(9 rows)
+```
+
+Now, almost every basic to some advance concepts is covered. but we were working
+on the particular dataset. what if we need to create our own tables and put the entries
+inside it and perform Queries on that table.
+
+
+### CRUD (create, read, update, delete)
+
+* create
+
+we are going to create a simple table and perform all the above operations and at the end 
+we will drop the table
+
+```sql
+> create table test (
+    id bigint,
+    name varchar(50),
+    phone_number varchar(20)
+  );
+
+  CREATE TABLE
+```
+
+to check if table is created use \dt
+
+```sql
+> \dt
+
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | subquery | table | vivekcr7
+ public | test     | table | vivekcr7
+```
+
+as we can see the test table is created. now we going to insert the data in it.
+
+
+* Insert
+
+now, we will insert values into our newly created table.
+
+```sql
+> insert into test values(1,'vivek','+91 1234567890');
+
+  INSERT 0 1
+```
+
+quickly write select query to check if data is inserted or not.
+
+```sql
+> select * from test;
+
+   id | name  |  phone_number
+  ----+-------+----------------
+    1 | vivek | +91 1234567890
+(1 row)
+```
+
+as we can see data is updated what if we want to insert multiple data at once
+
+```sql
+> insert into test values(2,'ronaldo','+91 2345678987'),
+    (3,'messi','+91 45678734567'),
+    (4,'lewandowski','+91 9876567434'),
+    (5,'neymar','+91 984524562');
+
+    INSERT 0 4
+```
+
+```sql
+> select * from test;
+
+     id |    name     |  phone_number
+    ----+-------------+-----------------
+        1 | vivek       | +91 1234567890
+        2 | ronaldo     | +91 2345678987
+        3 | messi       | +91 45678734567
+        4 | lewandowski | +91 9876567434
+        5 | neymar      | +91 984524562
+(5 rows)
+```
+
+* update
+
+now, update is basically used if we put some wrong entries.
+
+like what if entry with id 3 name is wrong.so to change that we have
+to use "UPDATE" clause.
+
+```sql
+> update test
+  set name = 'Dybala'
+  where id = 3
+  
+
+> select * from test
+    order by id;
+
+     id |    name     |  phone_number
+    ----+-------------+-----------------
+        1 | vivek       | +91 1234567890
+        2 | ronaldo     | +91 2345678987
+        3 | Dybala      | +91 45678734567
+        4 | lewandowski | +91 9876567434
+        5 | neymar      | +91 984524562
+(5 rows)
+```
+
+as you can see the name has change from 'messi' to 'Dybala' using the update
+clause.
+
+* delete / drop
+
+now we have come to our last topic, which is delete and drop statement
+
+delete row with id 4
+
+```sql
+> delete from test
+    where id = 4;
+
+    DELETE 1
+
+> select * from test
+    order by id;
+
+ id |  name   |  phone_number
+----+---------+-----------------
+  1 | vivek   | +91 1234567890
+  2 | ronaldo | +91 2345678987
+  3 | Dybala  | +91 45678734567
+  5 | neymar  | +91 984524562
+(4 rows)
+```
+
+now row with id 4 is deleted what if you want to delete all the entries
+
+```sql
+> delete from test;
+
+  DELETE 4
+
+> select * from test;
+
+     id | name | phone_number
+    ----+------+--------------
+    (0 rows)
+```
+now all the rows has been deleted. now drop the table using "DROP" statement
+
+```sql
+> drop table test;
+
+  DROP TABLE
+
+> \dt
+
+            List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | subquery | table | vivekcr7
+(1 row)
+```
+now table is also deleted. now we also going to drop our database exercises.
+
+for that first move to different database using '\c'
+
+```sql
+> \c postgres
+
+> drop database exercises;
+
+    DROP DATABASE
+```
+
+now database is deleted to check write the below command
+
+```sql
+> \l
+
+it will give you the list of databases.
+```
+<br>
+
+# References
+
+* [SQL bolt](https://sqlbolt.com/lesson/introduction)
+* [pg exercises](https://pgexercises.com/)
+
+<br>
+
+# Author
 
 [@Vivek Dubey](https://www.linkedin.com/in/vivek-dubey-cr7/)
 
