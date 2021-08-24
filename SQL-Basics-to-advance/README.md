@@ -1,5 +1,5 @@
 
-# SQL scratch to advance
+# Everything about SQL
 
 This Article will give all you wanted to know about databases and how to write queries
 we are going to see simple queries to some advance and complex queries. Now the main agenda
@@ -28,6 +28,310 @@ A DBMS basically serves as an interface between the database and its end-users o
 allowing users to retrieve, update, and manage how the information is organized and optimized.
 A DBMS also facilitates oversight and control of databases, enabling a variety of administrative
 operations such as performance monitoring, tuning, and backup and recovery.
+
+<br>
+
+
+## ACID properties
+
+**Atomicity**
+
+By this, we mean that either the entire transaction takes place at once or doesn’t happen at all.
+There is no midway i.e. transactions do not occur partially. Each transaction is considered as one
+unit and either runs to completion or is not executed at all. It involves the following two operations. 
+
+**—Abort**: If a transaction aborts, changes made to database are not visible. 
+
+**—Commit**: If a transaction commits, changes made are visible. 
+Atomicity is also known as the ‘All or nothing rule’. 
+
+Example:
+
+Consider the following transaction T consisting of T1 and T2:
+Transfer of 100 from account X to account Y. 
+
+If the transaction fails after completion of T1 but before completion of T2.
+( say, after write(X) but before write(Y)), then amount has been deducted
+from X but not added to Y. This results in an inconsistent database state.
+Therefore, the transaction must be executed in entirety in order to ensure
+correctness of database state. 
+
+
+**Consistency**
+
+This means that integrity constraints must be maintained so that the database is consistent before and after the transaction. It refers to the correctness of a database. Referring to the example above, 
+The total amount before and after the transaction must be maintained. 
+Total before T occurs = 300 + 200 = 500. 
+Total after T occurs = 400 + 100 = 700. 
+Therefore, database is consistent. Inconsistency occurs in case T1 completes but T2 fails. As a result T is incomplete. 
+
+
+**Isolation**
+
+This property ensures that multiple transactions can occur concurrently without leading to
+the inconsistency of database state. Transactions occur independently without interference.
+Changes occurring in a particular transaction will not be visible to any other transaction
+until that particular change in that transaction is written to memory or has been committed.
+This property ensures that the execution of transactions concurrently will result in a state
+that is equivalent to a state achieved these were executed serially in some order. 
+
+
+**Durability**
+
+This property ensures that once the transaction has completed execution, the updates and modifications
+to the database are stored in and written to disk and they persist even if a system failure occurs.
+These updates now become permanent and are stored in non-volatile memory. The effects of the transaction,
+thus, are never lost.
+
+<br>
+
+![](dataset/acid-properties-database.png)
+
+<br>
+
+## CAP theorem
+
+The CAP theorem (also called Brewer’s theorem) states that a distributed database system can only guarantee
+two out of these three characteristics: Consistency, Availability, and Partition Tolerance.
+
+<br>
+
+![](dataset/cap-theorem.png)
+
+<br>
+
+**Consistency**
+
+A system is said to be consistent if all nodes see the same data at the same time.
+
+Simply, if we perform a read operation on a consistent system, it should return the
+value of the most recent write operation. This means that, the read should cause all
+nodes to return the same data, i.e., the value of the most recent write.
+
+**Availability**
+
+Availability in a distributed system ensures that the system remains operational 100% of the time.
+Every request gets a (non-error) response regardless of the individual state of a node.
+
+
+**Partition Tolerance**
+
+This condition states that the system does not fail, regardless of if messages are dropped or delayed between nodes in a system.
+
+Partition tolerance has become more of a necessity than an option in distributed systems. It is made possible by sufficiently
+replicating records across combinations of nodes and networks.
+
+
+## Normalization
+
+**Normalization** is the process of minimizing redundancy from a relation or set of relations. Redundancy in relation may cause
+insertion, deletion and updation anomalies. So, it helps to minimize the redundancy in relations. Normal forms are used to eliminate
+or reduce redundancy in database tables.
+
+There are different types of Normal Form to store the clean and well structured data:
+
+* **First normal form**:
+
+If a relation contain composite or multi-valued attribute, it violates first normal form or a relation is in first normal form if it
+does not contain any composite or multi-valued attribute. A relation is in first normal form if every attribute in that relation is
+singled valued attribute.
+
+Eg:
+
+```sql
+ID   Name   Courses
+------------------
+1    A      c1, c2
+2    B      c3
+3    C      c2, c3
+```
+
+Above table "Courses" is a multi valued attribute so it is not in 1NF.
+
+To make it 1NF we need to make "Courses" in a single valued attribute.
+below table is in the 1NF.
+
+```sql
+ID   Name   Course
+------------------
+1    A       c1
+1    A       c2
+2    B       c3
+3    C      c2
+3    C       c3
+```
+
+* **Second normal form**:
+
+To be in second normal form,a relation must be in first normal
+form and relation must not contain any partial dependency.
+A relation is in 2NF if it has No Partial Dependency, i.e.,
+no non-prime attribute (attributes which are not part of
+any candidate key) is dependent on any proper subset of
+any candidate key of the table.
+
+Eg:
+
+```sql
+STUD_ID           COURSE_NO        COURSE_FEE
+----------------------------------------------
+1                     C1                  1000
+2                     C2                  1500
+1                     C4                  2000
+4                     C3                  1000
+4                     C1                  1000
+2                     C5                  2000
+```
+
+looking above example, it is 1NF cause all the value is single valued
+attribute, but still we cannot find COURSE_FEE with the help of STUD_ID
+so there is a partial dependency so it is not in 2NF. 
+
+below is the example of 2NF
+
+```sql
+       Table 1  
+
+STUD_NO            COURSE_NO 
+----------------------------- 
+1                       C1                  
+2                       C2                  
+1                       C4                  
+4                       C3                  
+4                       C1      
+
+
+        Table 2
+COURSE_NO                COURSE_FEE  
+-----------------------------------   
+    C1                        1000
+    C2                        1500
+    C3                        1000
+    C4                        2000
+    C5                        2000   
+```
+
+we split the data into 2 table now, there is no partial dependency
+and table is in 2NF.
+
+* **Third normal form**
+
+A relation is in third normal form, if there is no transitive dependency for non-prime attributes as well as it is in second normal form.
+A relation is in 3NF if at least one of the following condition holds in every non-trivial function dependency X –> Y
+
+ * X is a super key.
+ * Y is a prime attribute.
+
+ Eg:
+
+ consider relation R(A, B, C, D, E)
+ A -> BC,
+ CD -> E,
+ B -> D,
+ E -> A
+
+ All possible candidate keys in above relation are {A, E, CD, BC} All attribute are on right sides of all functional dependencies are prime.
+
+
+
+## Indexes
+
+Indexing is a way to optimize the performance of a database by minimizing the number of disk accesses
+required when a query is processed. It is a data structure technique which is used to quickly locate
+and access the data in a database.
+
+Indexes are created using a few database columns.
+
+* The first column is the Search key that contains a copy of the primary key or candidate key of the table. These values are stored in sorted order so that the corresponding data can be accessed quickly.
+
+* The second column is the Data Reference or Pointer which contains a set of pointers holding the address of the disk block where that particular key value can be found.
+
+## Transactions
+
+A transaction can be defined as a group of tasks. A single task is the minimum processing unit which cannot be divided further.
+
+Let’s take an example of a simple transaction.
+Suppose a bank employee transfers Rs 500 from A's account to B's account. This very simple and small transaction involves several low-level tasks.
+
+The below codeblock shows all the level transaction happen when someone sends a money from one bank to another bank.
+
+
+**A's account**
+```sql
+Open_Account(A)
+Old_Balance = A.balance
+New_Balance = Old_Balance - 500
+A.balance = New_Balance
+Close_Account(A)
+```
+
+**B's account**
+```sql
+Open_Account(B)
+Old_Balance = B.balance
+New_Balance = Old_Balance + 500
+B.balance = New_Balance
+Close_Account(B)
+```
+
+## Locking Mechanism
+
+The locking mechanism is one of the means of concurrency control. Whenever multiple transactions
+are made a lock on data is needed. Therefore we require a mechanism to lock the requests and
+prevent the database from going to an inconsistent state. In this, the lock manager and the
+transactions exchange messages to lock and unlock the data items. The locking protocol
+requires a data Structure to implement it, and therefore the best data structure is the LOCK TABLE.
+
+<br>
+
+![](dataset/locking-mechanism.jpeg)
+
+<br>
+
+The transactions that are requesting a lock are having a downward arrow below them.
+Therefore we can see the locked data items are 5,47,167, 15. The color of the node represents the status i.e. granted or waiting.
+
+In the beginning, the lock table is empty and none of the data items is locked.
+
+Then when the lock manager receives a request to lock the particular data item from a Transaction for instance T(i) on data item P(i): then 2 cases might appear
+
+* P(i) is already granted a lock, then a new node will be added to the end of the linked list which contains the information about the kind of request made.
+* P(i) is not already locked, a linked list will be created and the lock will be granted.
+
+Now if the requested lock mode is compatible with the current transaction lock mode then T(i) will acquire the lock too and the status will be “Granted” else “ Waiting”.
+
+<br>
+
+## Isolation levels
+
+Isolation levels define the degree to which a transaction must be isolated from the data modifications
+made by any other transaction in the database system.
+
+SQL standard defines four isolation levels:
+
+* **Read Uncommitted**:
+    Read Uncommitted is the lowest isolation level. In this level, one transaction may read
+    not yet committed changes made by other transaction, thereby allowing dirty reads. In this level,
+    transactions are not isolated from each other.
+
+* **Read Committed**:
+    This isolation level guarantees that any data read is committed at the moment it is read.
+    Thus it does not allows dirty read. The transaction holds a read or write lock on the current row,
+    and thus prevent other transactions from reading, updating or deleting it.
+
+* **Repeatable Read**:
+    This is the most restrictive isolation level. The transaction holds read locks on all rows it
+    references and writes locks on all rows it inserts, updates, or deletes. Since other transaction
+    cannot read, update or delete these rows, consequently it avoids non-repeatable read.
+
+* **Serializable**:
+    This is the Highest isolation level. A serializable execution is guaranteed to be serializable.
+    Serializable execution is defined to be an execution of operations in which concurrently executing
+    transactions appears to be serially executing.
+
+<br>
+
+![](dataset/isolation.png)
 
 <br>
 
@@ -607,6 +911,78 @@ on the particular dataset. what if we need to create our own tables and put the 
 inside it and perform Queries on that table.
 
 
+### Triggers
+
+**Triggers** are the SQL statements that are automatically executed when there is any change in the database.
+The triggers are executed in response to certain events(INSERT, UPDATE or DELETE) in a particular table.
+These triggers help in maintaining the integrity of the data by changing the data of the database in a
+systematic fashion.
+
+one real life example, If you sign up to a new website, then you get a welcome mail from that site
+one possibility is than triggers are used that Whenever a new user sign up then system should send the welcome
+mail to the new user.
+
+lets see trigger in practical.
+
+```sql
+> create table student (
+    id bigint,
+    name varchar(50),
+    choclates varchar(50)
+);
+
+> insert into student values (1,'Vivek',10),
+    (2,'Ronaldo',5),
+    (3,'Messi',2),
+    (4,'lewandowski',6);
+
+> select * from student;
+
+ id |    name     | choclates
+----+-------------+-----------
+  1 | Vivek       | 10
+  2 | Ronaldo     | 5
+  3 | Messi       | 2
+  4 | lewandowski | 6
+(4 rows)
+```
+
+As you can see, I created a dummy table of student to demonstrate how trigger works.
+
+now there are 3 column of id, name, choclates what if I want to create a trigger
+that will add 10 choclates to every student Whenever a new student is inserted in
+the table
+
+lets see,
+
+```sql
+> create trigger add_choclates
+    before
+    insert
+    on student
+    for each row
+    set choclates = choclates+10;
+```
+
+```sql
+> insert into student values (5,'Neymar',5);
+
+> select * from student;
+ id |    name     | choclates
+----+-------------+-----------
+  1 | Vivek       | 20
+  2 | Ronaldo     | 15
+  3 | Messi       | 12
+  4 | lewandowski | 16
+  5 | Neymar      | 15
+(5 rows)
+```
+
+Here, we can see that the data is updated and 10 choclates are added to every
+row with the help of trigger.
+
+
+
 ### CRUD (create, read, update, delete)
 
 * CREATE
@@ -802,7 +1178,7 @@ Thank you for staying till the end of the article.
 
 # Author
 
-[@Vivek Dubey](https://www.linkedin.com/in/vivek-dubey-cr7/)
+[@Vivek Dubey]()
 
 
 
