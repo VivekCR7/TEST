@@ -8,7 +8,6 @@ be some resources and pratice set where you can practice queries.
 
 Before moving to the queries, we need to see some basic terminologies.
 
-<br>
 
 ## What is Database?
 
@@ -19,7 +18,6 @@ You can take library as an example where, library is the **database** and the bo
 Books of different genere which are organized and stored in there respective section is what database
 is organizing and storing of data.
 
-<br>
 
 ## What is Database Management System (DBMS)?
 
@@ -29,20 +27,17 @@ allowing users to retrieve, update, and manage how the information is organized 
 A DBMS also facilitates oversight and control of databases, enabling a variety of administrative
 operations such as performance monitoring, tuning, and backup and recovery.
 
-<br>
-
-
 ## ACID properties
 
-**Atomicity**
+* **Atomicity**
 
 By this, we mean that either the entire transaction takes place at once or doesn’t happen at all.
 There is no midway i.e. transactions do not occur partially. Each transaction is considered as one
 unit and either runs to completion or is not executed at all. It involves the following two operations. 
 
-**—Abort**: If a transaction aborts, changes made to database are not visible. 
+* **—Abort**: If a transaction aborts, changes made to database are not visible. 
 
-**—Commit**: If a transaction commits, changes made are visible. 
+* **—Commit**: If a transaction commits, changes made are visible. 
 Atomicity is also known as the ‘All or nothing rule’. 
 
 Example:
@@ -57,7 +52,7 @@ Therefore, the transaction must be executed in entirety in order to ensure
 correctness of database state. 
 
 
-**Consistency**
+* **Consistency**
 
 This means that integrity constraints must be maintained so that the database is consistent before and after the transaction. It refers to the correctness of a database. Referring to the example above, 
 The total amount before and after the transaction must be maintained. 
@@ -66,7 +61,7 @@ Total after T occurs = 400 + 100 = 700.
 Therefore, database is consistent. Inconsistency occurs in case T1 completes but T2 fails. As a result T is incomplete. 
 
 
-**Isolation**
+* **Isolation**
 
 This property ensures that multiple transactions can occur concurrently without leading to
 the inconsistency of database state. Transactions occur independently without interference.
@@ -76,31 +71,25 @@ This property ensures that the execution of transactions concurrently will resul
 that is equivalent to a state achieved these were executed serially in some order. 
 
 
-**Durability**
+* **Durability**
 
 This property ensures that once the transaction has completed execution, the updates and modifications
 to the database are stored in and written to disk and they persist even if a system failure occurs.
 These updates now become permanent and are stored in non-volatile memory. The effects of the transaction,
 thus, are never lost.
 
-<br>
 
 ![](dataset/acid-properties-database.png)
 
-<br>
 
 ## CAP theorem
 
 The CAP theorem (also called Brewer’s theorem) states that a distributed database system can only guarantee
 two out of these three characteristics: Consistency, Availability, and Partition Tolerance.
 
-<br>
-
 ![](dataset/cap-theorem.png)
 
-<br>
-
-**Consistency**
+* **Consistency**
 
 A system is said to be consistent if all nodes see the same data at the same time.
 
@@ -108,13 +97,13 @@ Simply, if we perform a read operation on a consistent system, it should return 
 value of the most recent write operation. This means that, the read should cause all
 nodes to return the same data, i.e., the value of the most recent write.
 
-**Availability**
+* **Availability**
 
 Availability in a distributed system ensures that the system remains operational 100% of the time.
 Every request gets a (non-error) response regardless of the individual state of a node.
 
 
-**Partition Tolerance**
+* **Partition Tolerance**
 
 This condition states that the system does not fail, regardless of if messages are dropped or delayed between nodes in a system.
 
@@ -183,11 +172,11 @@ STUD_ID           COURSE_NO        COURSE_FEE
 2                     C5                  2000
 ```
 
-looking above example, it is 1NF cause all the value is single valued
+Looking above example, it is 1NF cause all the value is single valued
 attribute, but still we cannot find COURSE_FEE with the help of STUD_ID
 so there is a partial dependency so it is not in 2NF. 
 
-below is the example of 2NF
+Below is the example of 2NF.
 
 ```sql
        Table 1  
@@ -211,7 +200,7 @@ COURSE_NO                COURSE_FEE
     C5                        2000   
 ```
 
-we split the data into 2 table now, there is no partial dependency
+We split the data into 2 table now, there is no partial dependency
 and table is in 2NF.
 
 * **Third normal form**
@@ -282,11 +271,7 @@ prevent the database from going to an inconsistent state. In this, the lock mana
 transactions exchange messages to lock and unlock the data items. The locking protocol
 requires a data Structure to implement it, and therefore the best data structure is the LOCK TABLE.
 
-<br>
-
 ![](dataset/locking-mechanism.jpeg)
-
-<br>
 
 The transactions that are requesting a lock are having a downward arrow below them.
 Therefore we can see the locked data items are 5,47,167, 15. The color of the node represents the status i.e. granted or waiting.
@@ -299,8 +284,6 @@ Then when the lock manager receives a request to lock the particular data item f
 * P(i) is not already locked, a linked list will be created and the lock will be granted.
 
 Now if the requested lock mode is compatible with the current transaction lock mode then T(i) will acquire the lock too and the status will be “Granted” else “ Waiting”.
-
-<br>
 
 ## Isolation levels
 
@@ -329,11 +312,8 @@ SQL standard defines four isolation levels:
     Serializable execution is defined to be an execution of operations in which concurrently executing
     transactions appears to be serially executing.
 
-<br>
-
 ![](dataset/isolation.png)
 
-<br>
 
 ## What is structured query language (SQL) ?
 
@@ -350,8 +330,6 @@ below links.
 
 * [Setup postgres on mac](https://www.sqlshack.com/setting-up-a-postgresql-database-on-mac/)
 * [Setup postgres on linux](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart)
-
-<br>
 
 # Dataset
 
@@ -377,8 +355,6 @@ your_name=# \q
 ```
 
 Dataset is loaded and ready to work on.
-
-<br>
 
 # Queries
 
@@ -426,7 +402,6 @@ Now here cd is a schema, and below image shows the structure of the table and th
 
 Now, we can practice some of the basic Queries
 
-<br>
 
 ### SELECT statement
 
@@ -506,8 +481,6 @@ We can use specify multiple column sperated by '**,**' for selecting multiple co
 
 We can use "*" for selecting all the data from a particular table.
 
-<br>
-
 ### WHERE clause
 
 **WHERE** clause is applied to each row of data by checking
@@ -546,7 +519,6 @@ As you can see all the entries with monthlymaintenance less than 50 is retrieved
      6 | Squash Court   |        3.5 |      17.5 |          5000 |                 80
 ```
 
-<br>
 
 ### BETWEEN / NOT BETWEEN
 
@@ -584,7 +556,7 @@ Here we get the column from range 3 and 5 of bookid. Similarly we can use **NOT 
      11 |     6 |     0 | 2012-07-04 12:30:00 |     2
      12 |     6 |     0 | 2012-07-04 14:00:00 |     2
 ```
-<br>
+
 
 ### IN/ NOT IN
 
@@ -625,8 +597,6 @@ Similarly we can do it for **NOT IN**.
 
 ```
 
-<br>
-
 ### LIKE operator
 
 **LIKE** operator is used to perform conditions on the strings. "%" operators is for multiple
@@ -646,8 +616,6 @@ and " _ " operators is for one.
 
 Here, in above example I received the firstname which starts from "T", "%% operator is used so that multiple character
 can come after "T". this we can perform operations on strings
-
-<br>
 
 ### Sorting (order by)
 
@@ -692,7 +660,6 @@ We can also use "OFFSET" keyword to get the limited data.
 
 Offset allows to start from that number and limit helps to get the particular number of rows.
 
-<br>
 
 ### JOINS
 
@@ -747,7 +714,6 @@ that how joins work in SQL.
 
 [Learn JOINS from here](https://joins.spathon.com/)
 
-<br>
 
 ### Expressions
 
@@ -773,8 +739,6 @@ it and create another column.
 
 So, in above example we added the membercost and guestcost and created a new column as total_cost using "AS" for naming
 and limit the first 10 entries. This is how we can perform multiple expressions and output the data.
-
-<br>
 
 ### Aggregations
 
@@ -823,7 +787,6 @@ Above example shows, how many facilities exist - simply produce a total count.
 Above example, gives the total number of slots booked per facility in the
 month of september 2012 and sorted by the number of slots.
 
-<br>
 
 ### GROUP BY / HAVING
 
@@ -859,7 +822,6 @@ in above example we used aggregate function SUM to get total the slots
 then we group by with "facid" which grouped the results with the distinct facid
 and we used having clause to filter out the entries whose slots is greater than 1000.
 
-<br>
 
 ### Subqueries
 
@@ -980,8 +942,6 @@ lets see,
 
 Here, we can see that the data is updated and 10 choclates are added to every
 row with the help of trigger.
-
-
 
 ### CRUD (create, read, update, delete)
 
@@ -1160,14 +1120,12 @@ Now database is deleted to check write the below command
 
 it will give you the list of databases.
 ```
-<br>
 
 # References
 
 * [SQL bolt](https://sqlbolt.com/lesson/introduction)
 * [pg exercises](https://pgexercises.com/)
 
-<br>
 
 # Conclusion
 
