@@ -2,11 +2,11 @@
 # SQL scratch to advance
 
 This Article will give all you wanted to know about databases and how to write queries
-we are going to see simple queries to some advance and complext queries. Now the main agenda
+we are going to see simple queries to some advance and complex queries. Now the main agenda
 of this Article is to make you comfortable in writing complex queries. In the end there will
 be some resources and pratice set where you can practice queries.
 
-before moving to the queries, we need to see some basic terminologies.
+Before moving to the queries, we need to see some basic terminologies.
 
 <br>
 
@@ -49,19 +49,19 @@ below links.
 
 <br>
 
-#s Dataset
+# Dataset
 
 We are going to use the dataset from pgexercises. It's a perfect dataset for practicing
 simple queries to complex queries.
 
-* [Download dataset]
+* [Download dataset](https://tinyurl.com/ctmen8f8)
 
-start the psql server
+Start the psql server
 
 ```bash
 ~ psql
 ```
-create database named exercises where we are going to load our dataset
+Create database named exercises, where we are going to load our dataset.
 
 ```
 your_name=# create database exercises;
@@ -83,13 +83,13 @@ and also loaded the .sql data in your system.
 
 We are going to use terminal for writing Queries.
 
-open psql server in terminal
+Open psql server in terminal
 
 ```bash
 ~ psql
 ```
 
-list the databases
+List the databases
 
 ```sql
 your_name=# \l
@@ -99,10 +99,10 @@ your_name=# \l
  exercises | your_name | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
 ```
 
-you can see, exercises database is there we just have to switch to that database then we can
+You can see, exercises database is there we just have to switch to that database, then we can
 access the tables.
 
-switch databases
+Switch databases
 
 ```sql
 \c exercises
@@ -115,7 +115,7 @@ exercises=# \dn
  public | postgres
 ```
 
-now here cd is a schema, and below image shows the structure of the table and there relations.
+Now here cd is a schema, and below image shows the structure of the table and there relations.
 
 ![](dataset/Screenshot%202021-08-23%20at%209.28.00%20PM.png)
 
@@ -123,7 +123,6 @@ now here cd is a schema, and below image shows the structure of the table and th
 Now, we can practice some of the basic Queries
 
 <br>
-
 
 ### SELECT statement
 
@@ -151,12 +150,12 @@ The SELECT statement is used to select data from a database.
 
 ```
 
-here, **SELECT** statement is used to retrieve the particular data or column
+Here, **SELECT** statement is used to retrieve the particular data or column
 from a table. above statement also has **LIMIT** which specifies the number of 
-rows to be shown, it is used when there is large dataset
+rows to be shown, it is used when there is large dataset.
 
 
-* select multiple column
+* Select multiple column
 
 ```sql
 > select firstname, surname from cd.members
@@ -178,9 +177,9 @@ rows to be shown, it is used when there is large dataset
 
 ```
 
-we can use specify multiple column sperated by '**,**' for selecting multiple column.
+We can use specify multiple column sperated by '**,**' for selecting multiple column.
 
-* select all columns
+* Select all columns
 
 ```sql
 > select * from cd.bookings
@@ -201,7 +200,7 @@ we can use specify multiple column sperated by '**,**' for selecting multiple co
 (10 rows)
 ```
 
-we can use "*" for selecting all the data from a particular table
+We can use "*" for selecting all the data from a particular table.
 
 <br>
 
@@ -211,7 +210,7 @@ we can use "*" for selecting all the data from a particular table
 specific column values to determine whether it should be
 included in the results or not.
 
-* example of where clause
+* Example of where clause
 
 ```sql
 > select * from cd.facilities
@@ -224,10 +223,10 @@ included in the results or not.
       8 | Pool Table    |          0 |         5 |           400 |                 15
 ```
 
-as you can see all the entries with monthlymaintenance less than 50 is retrieved
+As you can see all the entries with monthlymaintenance less than 50 is retrieved.
 
 
-* we can use logic operators like **AND** and **OR** for multiple conditions
+* We can use logical operators like **AND** and **OR** for multiple conditions
 
 ```sql
 > select * from cd.facilities
@@ -260,7 +259,7 @@ As name defines it is widely used for extracting data in range.
       5 |     8 |     1 | 2012-07-03 15:00:00 |     1
 ```
 
-here we get the column from range 3 and 5 of bookid. Similarly we can use not between
+Here we get the column from range 3 and 5 of bookid. Similarly we can use **NOT BETWEEN**.
 
 ```sql
 > select * from cd.bookings
@@ -300,7 +299,7 @@ As named, it is used to get data if it is present in some list or according the 
 
 the above Query listed all the entries if the book id is in that list.
 
-Similarly we can do it for NOT IN.
+Similarly we can do it for **NOT IN**.
 
 ```sql
 > select * from cd.bookings
@@ -370,11 +369,11 @@ can come after "T". this we can perform operations on strings
     John      | Hunt
 ```
 
-here the name has been sorted descending and top 10 entries are retrived using "LIMIT" keyword
+Here the name has been sorted descending and top 10 entries are retrived using "LIMIT" keyword.
 
-we can also use "OFFSET" keyword to get the limited data
+We can also use "OFFSET" keyword to get the limited data.
 
-* get the data of id from 3 to 5 using offset
+* Get the data of id from 3 to 5 using offset
 
 ```sql
 > select memid,firstname, surname from cd.members
@@ -387,7 +386,7 @@ we can also use "OFFSET" keyword to get the limited data
      5 | Gerald    | Butters
 ```
 
-offset allows to start from that number and limit helps to get the particular number of rows.
+Offset allows to start from that number and limit helps to get the particular number of rows.
 
 <br>
 
@@ -427,18 +426,17 @@ two tables on the facid.
 
 * LEFT JOIN
 
-  left join is used to get all the data from left table even if there isn't a match with 
-  right table. if there is a match then it's ok or else the cell is shown NULL.
+  Returns all rows from the left table, even if there are no matches in the right table.
 
 * RIGHT JOIN
 
-  right join is used to get all the data from the right table even if there isn't a match
-  with the left table.
+  Returns all rows from the right table, even if there are no matches in the left table.
 
 * FULL JOIN
 
-  full join gets all the data matched as well as unmatched. also known as Outer Join
-
+  It combines the results of both left and right outer joins.
+  
+The joined table will contain all records from both the tables and fill in NULLs for missing matches on either side.
 
 unfortunately, we don't have such conditions to show that in practical but below is the link you can visualize
 that how joins work in SQL.
@@ -450,7 +448,7 @@ that how joins work in SQL.
 ### Expressions
 
 We can use expression like multiplication and calculations while select the column and renamed
-it and create another column
+it and create another column.
 
 ```sql
 > select name, membercost+guestcost as total_cost from cd.facilities
@@ -469,9 +467,8 @@ it and create another column
     Pool Table      |          5
 ```
 
-so, in above example we add the membercost and guestcost and created new column as total_cost using "AS" for naming
-and limit the first 10 entries.
-this is how we can perform multiple expressions and output the data.
+So, in above example we added the membercost and guestcost and created a new column as total_cost using "AS" for naming
+and limit the first 10 entries. This is how we can perform multiple expressions and output the data.
 
 <br>
 
@@ -481,7 +478,7 @@ In addition to the simple expressions, SQL also supports the use of
 aggregate expressions (or functions) that allow you to summarize information
 about a group of rows of data.
 
-some common aggregate functions are, Count, Sum, Min, Max which makes our work
+Some common aggregate functions are, Count, Sum, Min, Max which makes our work
 fast and effective.
 
 ```sql
@@ -493,7 +490,7 @@ fast and effective.
 (1 row)
 ```
 
-above example shows, how many facilities exist - simply produce a total count.
+Above example shows, how many facilities exist - simply produce a total count.
 
 
 ```sql
@@ -519,7 +516,7 @@ above example shows, how many facilities exist - simply produce a total count.
       4 |         648  
 ```
 
-above example, gives the total number of slots booked per facility in the
+Above example, gives the total number of slots booked per facility in the
 month of september 2012 and sorted by the number of slots.
 
 <br>
@@ -532,9 +529,9 @@ into summary rows, like "find the number of customers in each country".
 "GROUP BY" clause comes after the "WHERE" clause so to filter the "GROUP BY" data luckily we
 have the "HAVING" clause.
 
-we will see this thing in action.
+We will see this thing in action.
 
-suppose we need to produce a list of facilities with more than 1000 slots. we can get the results
+Suppose we need to produce a list of facilities with more than 1000 slots. we can get the results
 with the help of group by and having.
 
 ```sql
@@ -558,12 +555,13 @@ in above example we used aggregate function SUM to get total the slots
 then we group by with "facid" which grouped the results with the distinct facid
 and we used having clause to filter out the entries whose slots is greater than 1000.
 
+<br>
 
 ### Subqueries
 
 Subqueries is like the nested Queries, like we have a query inside a query
 
-the simple example is, suppose if you want to create a new table with your result query we
+The simple example is, suppose if you want to create a new table with your result query we
 can simply do it by using Subqueries.
 
 
@@ -576,7 +574,7 @@ can simply do it by using Subqueries.
 SELECT 9
 ```
 
-to check the output write below command
+To check the output write below command.
 
 ```sql
 > \dt
@@ -611,10 +609,10 @@ inside it and perform Queries on that table.
 
 ### CRUD (create, read, update, delete)
 
-* create
+* CREATE
 
-we are going to create a simple table and perform all the above operations and at the end 
-we will drop the table
+We are going to create a simple table and perform all the above operations and at the end 
+we will drop the table.
 
 ```sql
 > create table test (
@@ -626,7 +624,7 @@ we will drop the table
   CREATE TABLE
 ```
 
-to check if table is created use \dt
+To check if table is created use \dt
 
 ```sql
 > \dt
@@ -638,12 +636,12 @@ to check if table is created use \dt
  public | test     | table | vivekcr7
 ```
 
-as we can see the test table is created. now we going to insert the data in it.
+As we can see the **test** table is created. now we going to insert the data in it.
 
 
-* Insert
+* INSERT
 
-now, we will insert values into our newly created table.
+Now, we will insert values into our newly created table.
 
 ```sql
 > insert into test values(1,'vivek','+91 1234567890');
@@ -651,7 +649,7 @@ now, we will insert values into our newly created table.
   INSERT 0 1
 ```
 
-quickly write select query to check if data is inserted or not.
+Quickly write select query to check if data is inserted or not.
 
 ```sql
 > select * from test;
@@ -662,7 +660,7 @@ quickly write select query to check if data is inserted or not.
 (1 row)
 ```
 
-as we can see data is updated what if we want to insert multiple data at once
+As we can see data is updated what if we want to insert multiple data at once
 
 ```sql
 > insert into test values(2,'ronaldo','+91 2345678987'),
@@ -686,11 +684,11 @@ as we can see data is updated what if we want to insert multiple data at once
 (5 rows)
 ```
 
-* update
+* UPDATE
 
-now, update is basically used if we put some wrong entries.
+Now, update is basically used if we put some wrong entries.
 
-like what if entry with id 3 name is wrong.so to change that we have
+Like what if entry with id 3 name is wrong.so to change that we have
 to use "UPDATE" clause.
 
 ```sql
@@ -712,14 +710,14 @@ to use "UPDATE" clause.
 (5 rows)
 ```
 
-as you can see the name has change from 'messi' to 'Dybala' using the update
+As you can see the name has change from 'messi' to 'Dybala' using the update
 clause.
 
-* delete / drop
+* DELETE / DROP
 
-now we have come to our last topic, which is delete and drop statement
+Now we have come to our last topic, which is delete and drop statement.
 
-delete row with id 4
+Delete row with id 4.
 
 ```sql
 > delete from test
@@ -739,7 +737,7 @@ delete row with id 4
 (4 rows)
 ```
 
-now row with id 4 is deleted what if you want to delete all the entries
+Now row with id 4 is deleted what if you want to delete all the entries.
 
 ```sql
 > delete from test;
@@ -752,7 +750,7 @@ now row with id 4 is deleted what if you want to delete all the entries
     ----+------+--------------
     (0 rows)
 ```
-now all the rows has been deleted. now drop the table using "DROP" statement
+Now all the rows has been deleted. now drop the table using "DROP" statement.
 
 ```sql
 > drop table test;
@@ -767,9 +765,9 @@ now all the rows has been deleted. now drop the table using "DROP" statement
  public | subquery | table | vivekcr7
 (1 row)
 ```
-now table is also deleted. now we also going to drop our database exercises.
+Now table is also deleted. now we also going to drop our database exercises.
 
-for that first move to different database using '\c'
+For that first move to different database using '\c', cause we cannot drop an active database.
 
 ```sql
 > \c postgres
@@ -779,7 +777,7 @@ for that first move to different database using '\c'
     DROP DATABASE
 ```
 
-now database is deleted to check write the below command
+Now database is deleted to check write the below command
 
 ```sql
 > \l
@@ -794,6 +792,13 @@ it will give you the list of databases.
 * [pg exercises](https://pgexercises.com/)
 
 <br>
+
+# Conclusion
+
+Hope you have understood all the concepts, Database is very vast topic I have tried to covered the important ones which every developer should know. Above is the 
+2 reference link which will be more helpful if you refer and practice queries from there. 
+
+Thank you for staying till the end of the article.
 
 # Author
 
