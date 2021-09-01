@@ -550,11 +550,12 @@ body{
     background-position: center;
     background-attachment: scroll;
 }
-
+```
 above are some commonly used properties there is nothing to explain in plain English.
 
 but we can use all this in a single line
 
+```css
 body{
     background: red url(image.png) no-repeat contain;
 }
@@ -646,9 +647,18 @@ div{
 
 * `inline` takes out the space required by the element. NO line breaks before and after. Setting width and height not allowed neither margin and padding(top/bottom)
 * `block` takes full space available in width and height and leaves a newline before and after.
-* `inline-block similar to inline but setting height, width, margin and padding is allowed and elements can sit next to each other.
+* `inline-block` similar to inline but setting height, width, margin and padding is allowed and elements can sit next to each other.
 * `none` the element is removed from the document flow. its space is not blocked.
 * `hidden` the element is hidden but its space is reserved.
+
+
+**inline elements**
+
+There are different HTML elements that are declared as inline by default some of them are : `<a>`, `<br>`, `<span>`, `<label>`, `<input>`, `<img>`.
+
+**block elements**
+
+There are different HTML elements that are declared as block by default some of them are: `<div>`, `header`, `nav`,.
 
 
 ```css
@@ -665,6 +675,7 @@ p{
 * `text-align` tells where to align the content inside the box.
 * `text-decoration` helps to decorate the particular text.
 * `text-transform` without manually writing all the words uppercase you can use this property to transform it to uppercase or lowercase.
+
 
 
 **FONTS**
@@ -830,6 +841,93 @@ Media queries are used to make the website responsive so, that website will run 
 It acts as a trigger, considering the above example if the screen comes to the width of 768px which normally is of tablets width then the body element will get overridden with new properties. This is how we can adjust the size of divisions in different resolutions. All this is known as responsiveness.
 
 ![media-queries](https://www.seobility.net/en/wiki/images/6/6f/Media-Queries.png)
+
+### CSS Specificity
+
+When more than one set of CSS rules apply to the same element, the browser will have to decide which specific set will be applied to the element. The rules the browser follows are collectively called **Specificity**.
+
+Specificity rules include:
+
+* CSS style applied by referencing external stylesheet has the lowest precedence and is overridden by Internal and inline CSS.
+* Internal CSS is overridden by inline CSS.
+* Inline CSS has the highest priority and overrides all other selectors.
+
+Specificity Hierarchy: every element selector has a position in the Hierarchy.
+
+* Inline style: Inline style has the highest priority.
+* Identifiers(ID): ID has the second-highest priority.
+* Classes, pseudo-classes and attributes: Classes, pseudo-classes and attributes come next. 
+* Elements and pseudo-elements: Elements and pseudo-elements have the lowest priority. 
+
+**NOTE**
+
+* When two or more selectors have equal specificity, the last(latest) one counts.
+* Universal selectors like body and inherited selectors have the least specificity.
+
+### CSS Structural Classes
+
+Structural pseudo-classes allow access to the child elements present within the hierarchy of parent elements. We can select the first-child element, last-child element, alternate elements present within the hierarchy of parent elements.
+
+The following is the list of structural classes.
+
+* First-child
+
+first-child represents the element that is prior to its siblings in a tree structure.
+
+```css
+<style>
+table tr:first-child{
+ background-color:gray;
+}
+</style>
+```
+
+* nth-child[n]
+
+nth-child(Expression) class applies CSS properties to those elements that appear at the position evaluated by the resultant of an expression. The expression evaluates to a value resulting in the position of the element in a tree structure.
+
+For example, nth-child(2n+1) pseudo-class applies to the rows of tables that appear at the position of the given expression.
+
+tr:nth-child(2n+1) represents rows such as 1st, 3rd, 5th, 7th.... for the n values of 0, 1, 2, 3.......
+
+```css
+<style>
+table tr:nth-child(2n+1){
+ background-color:gray;
+}
+</style>
+```
+
+It means the background colour of the 1st, 3rd, 5th, etc, the element is grey.
+
+* last-child
+
+The last-child pseudo-class represents the element that is at the end of its siblings in a tree structure.
+
+```css
+<style>
+ul li:last-child{
+ background-color:lightblue;
+}
+</style>
+```
+
+It means the background colour of the last child on the unordered list is light blue.
+
+* only-child
+
+only-child represents the element that is the sole child of the parent element and there is no other sibling.
+
+```css
+<style>
+div p:only-child{
+ background-color:lightblue;
+}
+</style>
+```
+
+It means the first and last elements are the same.
+
 
 # References
 
